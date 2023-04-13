@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _strspn - This fxn returns the no of bytes in s that only has bytes of accept
+ * _strspn - fxn to return the no of bytes in s that only has bytes of accept
  * @s: pointer input variable
  * @accept: pointer input variable
  * Return: Always 0 (Success)
