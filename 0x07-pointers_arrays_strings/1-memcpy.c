@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  *_memcpy - This is a fxn that copies a memory area
- *@dest: pointer to the destination memory 
+ *@dest: pointer to the destination memory
  *@src: pointer to the source memory
  *@n: The number of bytes
  *
