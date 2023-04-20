@@ -7,7 +7,7 @@
 * @n: The no. of paramters passed to the fxn.
 * @...: A variable no. of paramters to calculate the sum of.
 *
-* Return: 0 If n == 0 
+* Return: 0 If n == 0
 *         Otherwise - the sum of all parameters.
 */
 int sum_them_all(const unsigned int n, ...)
