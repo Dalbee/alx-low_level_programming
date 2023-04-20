@@ -9,7 +9,7 @@
 */
 void print_all(const char * const format, ...)
 {
-int j = 0;
+int j = 0; /** initialisation */
 char *str, *sep = "";
 va_list list;
 va_start(list, format);
