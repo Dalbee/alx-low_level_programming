@@ -35,7 +35,7 @@ str = "(nil)";
 printf("%s%s", sep, str);
 break;
 default:
-i++;
+j++;
 continue;
 }
 sep = ", ";
