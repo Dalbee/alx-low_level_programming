@@ -1,1 +1,5 @@
-alx-low_level_programming
+# Alx-low_level_programming
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
