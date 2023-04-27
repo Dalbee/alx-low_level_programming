@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _isupper - this program checks whether a given input is an uppercase letter
+ * _isupper -a fx. that checks whether a given input is an uppercase letter
  * @c: a parameter
  * Return: 1 if c is uppercase, 0 otherwise
  */
