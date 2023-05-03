@@ -10,7 +10,7 @@ void free_listp(listp_t **head)
 {
 	listp_t *temp_value;/**pointer temp*/
 	/**variable stores current node to be freed*/
-	listp_t *current;/**pointer to iterate through the list*/ 
+	listp_t *current;/**pointer to iterate through the list*/
 
 	if (head != NULL)
 	{
@@ -29,15 +29,16 @@ void free_listp(listp_t **head)
  * @head: the head of a list.
  *
  * Return: the number of nodes in the list.
+ * Declare a variable called num_of_nodes to keep track of the number
+ * of nodes in the list. Also, declare three pointers: hptr, new_node,
+ * and add. hptr is used to keep track of the nodes that have already
+ * been traversed, new_node is used to create new nodes for hptr,
+ * and add is used to traverse hptr
  */
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t num_of_nodes = 0;
-	listp_t *hptr, *new_node, *add; /**declares a variable called*/
-	/**num_of_nodes to keep track of the number of nodes in the list. Also, declare 
-	 * three pointers: hptr, new_node, and add. hptr is used to keep
-	 * track of the nodes that have already been traversed, new_node
-	 * is used to create new nodes for hptr, and add is used to traverse hptr.*/
+	listp_t *hptr, *new_node, *add;
 
 	hptr = NULL;
 	while (head != NULL)
