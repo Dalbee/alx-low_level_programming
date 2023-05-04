@@ -1,5 +1,5 @@
-#0x14. C - Bit manipulation
-##The header file `main.h` contains declarations for the following functions:
+# 0x14. C - Bit manipulation
+## The header file `main.h` contains declarations for the following functions:
 
 1. `unsigned int binary_to_uint(const char *b)` - a function that converts a binary number to an unsigned integer.
 2. `void print_binary(unsigned long int n)` - a function that prints the binary representation of an unsigned long integer.
