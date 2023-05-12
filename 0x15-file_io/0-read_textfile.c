@@ -1,4 +1,4 @@
-#include <main.h>
+#include "main.h"
 
 /**
  * read_textfile - a fucntion that reads a text file and prints 
@@ -10,14 +10,14 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-    FILE *my_file;
+    int my_file;
     char *my_buffer;
     ssize_t num_bytes_read, num_bytes_written;
 
     if (!filename)
         return (0);
 
-    my_file = fopen(filename, O_RDONLY);
+    my_file = open(filename, O_RDONLY);
     if (my_file == -1)/**my_file==NULL*/
         return (0);
 
