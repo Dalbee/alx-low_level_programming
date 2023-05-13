@@ -30,7 +30,7 @@ void close_elf(int elf);
  */
 void check_elf(unsigned char *e_ident)
 {
-	int i;
+	int i;/**Index*/
 
 	for (i = 0; i < 4; i++)
 	{
