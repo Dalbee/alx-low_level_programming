@@ -23,7 +23,7 @@ void error_file(int source_file, int dest_file, char *argv[])
 }
 
 /**
- * main - the program examine the code.
+ * main - the program used to examine the code.
  * @argc: the number of arguments.
  * @argv: the arguments vector.
  * Return: Always 0.
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp source_file dest_file");
+		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
 		exit(97);
 	}
 
