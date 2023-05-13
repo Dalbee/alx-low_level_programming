@@ -30,7 +30,7 @@ void error_file(int source_file, int dest_file, char *argv[])
  */
 int main(int argc, char *argv[])
 {
-	int source_file, dest_file, error_close;
+	int source_file, dest_file, err_cl;
 	ssize_t no_char_r, no_char_wr;
 	char buffer[1024];
 
@@ -55,15 +55,15 @@ int main(int argc, char *argv[])
 			error_file(0, -1, argv);
 	}
 
-	error_close = close(source_file);
-	if (error_close == -1)
+	err_cl = close(source_file);
+	if (err_cl == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", source_file);
 		exit(100);
 	}
 
-	error_close = close(dest_file);
-	if (error_close == -1)
+	err_cl = close(dest_file);
+	if (err_cl == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", source_file);
 		exit(100);
