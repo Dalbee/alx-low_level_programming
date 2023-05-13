@@ -8,7 +8,7 @@
  * @argv: the arguments vector.
  * Return: no return.
  */
-void err_fd(int source_file, int dest_file, char *argv[])
+void error_file(int source_file, int dest_file, char *argv[])
 {
 	if (source_file == -1)
 	{
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 
 	source_file = open(argv[1], O_RDONLY);
 	dest_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-	err_fd(source_file, dest_file, argv);
+	error_file(source_file, dest_file, argv);
 
 	no_char_r = 1024;
 	while (no_char_r == 1024)
@@ -69,3 +69,4 @@ int main(int argc, char *argv[])
 		exit(100);
 	}
 	return (0);
+}
