@@ -1,78 +1,71 @@
 #include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-
-#define buff_SIZE 1024
 
 /**
- * main - entry point of the program
- * @argc: the number of command-line arguments
- * @argv: an array of command-line argument strings
- *
- * Return: 0 on success, or the corresponding error code on failure
+ * err_fd - a function that checks if files can be opened.
+ * @source_file: source_file.
+ * @dest_file: dest_file.
+ * @argv: the arguments vector.
+ * Return: no return.
  */
-int main(int argc, char *argv[])
+void err_fd(int source_file, int dest_file, char *argv[])
 {
-	int source_file, dest_file, ret;
-	ssize_t no_bytes_read, no_bytes_written;
-	char buff[buffer_SIZE];
-
-	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
-		return (97);
-	}
-
-	source_file = open(argv[1], O_RDONLY);
 	if (source_file == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		return (98);
+		exit(98);
 	}
-
-	dest_file = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (dest_file == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		close(source_file);
-		return (99);
+		exit(99);
 	}
+}
 
-	while ((no_bytes_read = read(source_file, buff, buffer_SIZE)) > 0)
+/**
+ * main - the program examine the code.
+ * @argc: the number of arguments.
+ * @argv: the arguments vector.
+ * Return: Always 0.
+ */
+int main(int argc, char *argv[])
+{
+	int source_file, dest_file, error_close;
+	ssize_t no_char_r, no_char_wr;
+	char buffer[1024];
+
+	if (argc != 3)
 	{
-		no_bytes_written = write(dest_file, buff, no_bytes_read);
-		if (no_bytes_written == -1 || no_bytes_written != no_bytes_read)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			close(source_file);
-			close(dest_file);
-			return (99);
-			}
+		dprintf(STDERR_FILENO, "%s\n", "Usage: cp source_file dest_file");
+		exit(97);
 	}
 
-	if (no_bytes_read == -1)
+	source_file = open(argv[1], O_RDONLY);
+	dest_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
+	err_fd(source_file, dest_file, argv);
+
+	no_char_r = 1024;
+	while (no_char_r == 1024)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		close(source_file);
-		close(dest_file);
-		return (98);
+		no_char_r = read(source_file, buffer, 1024);
+		if (no_char_r == -1)
+			err_fd(-1, 0, argv);
+		no_char_wr = write(dest_file, buffer, no_char_r);
+		if (no_char_wr == -1)
+			err_fd(0, -1, argv);
 	}
 
-	ret = 0;
-
-	if (close(source_file) == -1)
+	error_close = close(source_file);
+	if (error_close == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", source_file);
-		ret = 100;
+		exit(100);
 	}
 
-	if (close(dest_file) == -1)
+	error_close = close(dest_file);
+	if (error_close == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest_file);
-		ret = 100;
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", source_file);
+		exit(100);
 	}
-
-	return (ret);
-}
+	return (0);
