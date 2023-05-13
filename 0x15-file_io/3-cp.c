@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * err_fd - a function that checks if files can be opened.
+ * error_file - a function that checks if files can be opened.
  * @source_file: source_file.
  * @dest_file: dest_file.
  * @argv: the arguments vector.
